@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 export default class Task extends Component {
+
+  handlePress = () => {
+    this.props.onPress(this.props.id);
+  }
 
   render() {
 
@@ -10,11 +14,11 @@ export default class Task extends Component {
                         {}
 
     return (
-      <View style={styles.task}>
-        <Text style={[styles.content, decoration]} onPress={this.props.onPress}>
-        {this.props.content.text}
+      <TouchableOpacity style={styles.task} onPress={this.handlePress}>
+        <Text style={[styles.content, decoration]}>
+          {this.props.content.text}
         </Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
